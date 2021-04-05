@@ -32,7 +32,16 @@ The project uses data from [Million Song Dataset](https://labrosa.ee.columbia.ed
 ```
 ## Database Model
 
-The database will be designed for analytics using Fact and Dimensions tables on a Star Schema architecture:
+The database will be designed for analytics using Fact and Dimensions tables on a Star Schema architecture, and staging tables to read data from s3 data storage:
+
+**Staging Tables**
+
+  staging_events - Load the raw data from log events json files
+  artist, auth, firstName, gender, itemInSession, lastName, length, level, location, method, page, registration, sessionId, song, status, ts, userAgent, userId
+
+  staging_songs
+  num_songs	artist_id	artist_latitude	artist_longitude	artist_location	artist_name	song_id	title	duration	year
+  
 
 **Fact Table**
 
