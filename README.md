@@ -1,6 +1,6 @@
 # Data Warehouse with AWS Redshift
 
-This repository is for the third Data Engineering Nanodegree project from Udacity. This project implements a Data warehouse model with and Amazon Redshift:
+This repository is for the third Data Engineering Nanodegree project from Udacity. This project implements a Data warehouse model and pipeline using AWS S3  Bucket and Amazon Redshift.
 
 - Understanding the problem to solve
 - Modeling the database and pipeline model
@@ -10,7 +10,7 @@ This repository is for the third Data Engineering Nanodegree project from Udacit
 
 ## Problem understanding
 
-Define fact and dimension tables for a star schema for a particular analytic focus and write an ETL pipeline that transfers data from files in two local directories into these tables in Postgres using Python and SQL. The task is to create a database schema and upload the data into a PostgreSQL database and implement an ETL pipeline for this analysis.
+Build and test an ETL pipeline for a database hosted on AWS Redshift with the data warehouse model. The data need to be load from S3 to staging tables on Redshift and execute SQL statements that create the analytics tables from these staging tables.
 
 
 ## Data description
@@ -32,7 +32,16 @@ The project uses data from [Million Song Dataset](https://labrosa.ee.columbia.ed
 ```
 ## Database Model
 
-The database will be designed for analytics using Fact and Dimensions tables on a Star Schema architecture:
+The database will be designed for analytics using Fact and Dimensions tables on a Star Schema architecture, and staging tables to read data from s3 data storage:
+
+**Staging Tables**
+
+  staging_events - Load the raw data from log events json files
+  artist, auth, firstName, gender, itemInSession, lastName, length, level, location, method, page, registration, sessionId, song, status, ts, userAgent, userId
+
+  staging_songs
+  num_songs	artist_id	artist_latitude	artist_longitude	artist_location	artist_name	song_id	title	duration	year
+  
 
 **Fact Table**
 
@@ -56,17 +65,16 @@ The database will be designed for analytics using Fact and Dimensions tables on 
 ## Project structure
 
 The project structure is based on the Udacity's project template:
-1. **test.ipynb** displays the first few rows of each table to let you check your database
+1. **test.ipynb** Notebook to verify the etl scripts execution
 2. **create_tables.py** drops and creates your tables. You run this file to reset your tables before each time you run your ETL scripts
-3. **etl.ipynb** reads and processes a single file from song_data and log_data and loads the data into your tables
-5. **etl.py** reads and processes files from song_data and log_data and loads them into the databse tables
-7. **sql_queries.py** contains all the sql queries for create and fill the tables
-8. **README.md** provides discussion on your project
+3. **etl.py** reads and processes files from song_data and log_data and loads them into the databse tables
+4. **sql_queries.py** contains all the sql queries for create and fill the tables
+5. **README.md** provides discussion on your project
 
 ## ETL Pipeline description
 
 ### etl.py
-The ETL process is developed in the etl.py script. Data is load from the JSON files first from the songs dataset and extracting song_id, title, artist_id, year, duration columns and filling the songs table and artist table. (function process_song_file). The second dataset is load from logs files to fill the tables time and users. In both cases, the data is loaded to pandas data frames, and then cleaned and filtered and using psycopg2 the SQL insert scripts (sql_queries) to fill all the tables.
+The ETL process is developed in the etl.py script. Data is load from the JSON files first to the staging tables from the json files (Songs and events). Using the Redshift services execute the data copy to the staging tables and then executes the data extraction to the fact and dimensions tables.
 
 ### ETL pipeline diagram
 
@@ -74,17 +82,20 @@ The ETL process is developed in the etl.py script. Data is load from the JSON fi
 
 ## Instructions to run the pipeline
 
-A. Componentes required
-  1. Postgres dabase 
-  2. Jupyter notebooks environment available
-  3. Python packages: psycopg2, pandas and python-sql
+A. Components required
+
+ 1.	AWS amazon account
+ 2.	User created on IAM AWS and administrative role to connect from remote connection
+ 3.	Jupyter notebooks environment available
+ 4.	Python packages: psycopg2, pandas and python-sql
 
 B Running the pipeline
 
-  1. Clone the respository
-  2. Run create_tables.py (Drop tables and create again)
-  4. Run etl.py (Run the ETL process)
-  5. Run test.ipynb notebook to validate with son example querys
+ 1.	Clone the repository
+ 2.	Create IAM role and user and get the ID and ACCESS KEY
+ 3.	Run create_tables.py (Drop tables and create again)
+ 4.	Run etl.py (Run the ETL process)
+ 5.	Run test.ipynb notebook to validate with son example querys
 
 ## Author 
 Fernando Bonilla [linkedin](https://www.linkedin.com/in/fer-bonilla/)
