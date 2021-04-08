@@ -1,52 +1,102 @@
+# -*- coding: utf-8 -*-
+"""
+    This script implements the ETL pipeline to execute the process using amazon AWS services and redshift DB.
+    
+    Staging tables:
+        - staging_events - Load the raw data from log events json files artist
+        auth, firstName, gender, itemInSession,    lastName, length, level, location, method, page, registration, sessionId, song, status, ts, userAgent, userId
+
+        - staging_songs - num_songs artist_id artist_latitude artist_longitude artist_location artist_name song_id title duration year
+       
+    Dimension tables:
+        - users - users in the app: user_id, first_name, last_name, gender, level
+        - songs - songs in music database: song_id, title, artist_id, year, duration
+        - artists - artists in music database: artist_id, name, location, latitude, longitude
+        - time - timestamps of records in songplays: start_time, hour, day, week, month, year, weekday
+    
+    Fact Table:
+        - songplays - records in log data associated with song plays.
+        
+    The pipeline is implemented using dataframes loading data from Postgres database with the psycopg2 connector.        
+        
+"""
+
 import configparser
 import psycopg2
 from sql_queries import copy_table_queries, insert_table_queries
 
 
 def load_staging_tables(cur, conn):
-    """Load JSON input data (log_data and song_data) from S3 and insert
-        into staging_events and staging_songs tables.
-    Keyword arguments:
-    * cur --    reference to connected db.
-    * conn --   parameters (host, dbname, user, password, port)
-                to connect the DB.
-    Output:
-    * log_data in staging_events table.
-    * song_data in staging_songs table.
-    """    
-    for query in copy_table_queries:
-        cur.execute(query)
-        conn.commit()
-
+    
+    """
+        The function load_staging_tables read a json formatted file for songs and events from AWS S3 Bucket 
+        into staging raw tables staging_events and staging_songs
+        
+        Parameters:
+            cur (obj): 
+                psycopg2 cursor connection object.
+            conn (obj): 
+                connection object (host, dbname, user, password, port)
+    
+        Returns:
+            None
+            
+        Note:
+            This function writes direct to redshift tables            
+    """          
+    for query in copy_table_queries:        
+        try:
+            cur.execute(query)
+            conn.commit()
+        except psycopg2.Error as e:
+            print("Error executing loading staging insert script: "+ query)
+            print(e)        
+        
+        
 
 def insert_tables(cur, conn):
-    """Insert data from staging tables (staging_events and staging_songs)
-        into star schema analytics tables:
-        * Fact table: songplays
-        * Dimension tables: users, songs, artists, time
-    Keyword arguments:
-    * cur --    reference to connected db.
-    * conn --   parameters (host, dbname, user, password, port)
-                to connect the DB.
-    Output:
-    * Data inserted from staging tables to dimension tables.
-    * Data inserted from staging tables to fact table.
-    """    
+    
+    """
+        The function insert_tables read the data from raw staging tables to the dimensions and fact tables with format
+        and filters applied. 
+        
+        Parameters:
+            cur (obj): 
+                psycopg2 cursor connection object.
+            conn (obj): 
+                connection object (host, dbname, user, password, port)
+    
+        Returns:
+            None
+    
+        Note:
+            This function writes direct to redshift tables
+    """     
     for query in insert_table_queries:
-        cur.execute(query)
-        conn.commit()
+        try:
+            cur.execute(query)
+            conn.commit()
+        except psycopg2.Error as e:
+            print("Error executing loading dw tables insert script: "+ query)
+            print(e)    
 
 
 def main():
-    """Connect to DB and call
-        * load_staging_tables to load data from JSON files
-            (song_data and log_data in S3) to staging tables and
-        * insert_tables to insert data to analysis tables.
-    Keyword arguments:
-    * None
-    Output:
-    * All input data processed in DB tables.
-    """    
+    
+    """
+        The main function, creates the redshift database connection and initialize the cursor connection and first call
+        the load_staging_tables function to read json data to staging tables and then the insert_tables function to 
+        write data into the data warehouse tables.
+        
+        Parameters:
+            None
+    
+        Returns:
+            None
+    
+        Note:
+            This function read the configuration parameters from the dwh.cfg file using the psycopg2 library.
+    """  
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
