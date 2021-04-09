@@ -47,30 +47,32 @@ The database will be designed for analytics using Fact and Dimensions tables on 
 
 **Staging Tables**
 
+```
   staging_events - Load the raw data from log events json files
   artist, auth, firstName, gender, itemInSession, lastName, length, level, location, method, page, registration, sessionId, song, status, ts, userAgent, userId
 
   staging_songs
   num_songs	artist_id	artist_latitude	artist_longitude	artist_location	artist_name	song_id	title	duration	year
-  
+```  
 
 **Fact Table**
-
+```
   songplays - records in log data associated with song plays i.e. records with page NextSong
     songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
-
+```
 
 **Dimension Tables**
 
+```
   users - users in the app: user_id, first_name, last_name, gender, level
   songs - songs in music database: song_id, title, artist_id, year, duration
   artists - artists in music database: artist_id, name, location, latitude, longitude
   time - timestamps of records in songplays broken down into specific units: start_time, hour, day, week, month, year, weekday
-
+```
 
 ### Logic model
 
-![Logic model](https://github.com/Fer-Bonilla/Udacity-Data-Engineering-data-modeling-with-postgres/blob/main/images/ERD_Postgres_Database.png)
+![Logic model](https://github.com/Fer-Bonilla/Udacity-Data-Engineering-datawarehouse-with-aws-redshift/blob/main/redshift-udacity/DefaultLayout.svg)
 
 
 ## Project structure
