@@ -83,6 +83,7 @@ The project structure is based on the Udacity's project template:
 3. **etl.py** reads and processes files from song_data and log_data and loads them into the databse tables
 4. **sql_queries.py** contains all the sql queries for create and fill the tables
 5. **README.md** provides discussion on your project
+6. **swh.cfg** configuration parameters (Connection strindg and file paths)
 
 ## ETL Pipeline description
 
@@ -91,7 +92,7 @@ The ETL process is developed in the etl.py script. Data is load from the JSON fi
 
 ### ETL pipeline diagram
 
-![ETL pipeline diagram](https://github.com/Fer-Bonilla/Udacity-Data-Engineering-data-modeling-with-postgres/blob/main/images/ETL_Pipeline.png)
+![ETL pipeline diagram](https://github.com/Fer-Bonilla/Udacity-Data-Engineering-datawarehouse-with-aws-redshift/blob/main/images/ETL_pipeline.png)
 
 ## Instructions to run the pipeline
 
@@ -100,15 +101,17 @@ A. Components required
  1.	AWS amazon account
  2.	User created on IAM AWS and administrative role to connect from remote connection
  3.	Jupyter notebooks environment available
- 4.	Python packages: psycopg2, pandas and python-sql
+ 4.	Python packages: psycopg2 and python-sql
 
 B Running the pipeline
 
  1.	Clone the repository
- 2.	Create IAM role and user and get the ID and ACCESS KEY
- 3.	Run create_tables.py (Drop tables and create again)
- 4.	Run etl.py (Run the ETL process)
- 5.	Run test.ipynb notebook to validate with son example querys
+ 2.	Create IAM role and user
+ 3.	Create the Redshift cluster and get the connection data
+ 4.	Configure the connection values in the dwh.cfg file
+ 5.	Run create_tables.py (Drop tables and create again)
+ 6.	Run etl.py (Run the ETL process)
+ 7.	Run test.ipynb notebook to validate the data. (Execute some selects and counts)
 
 ## Author 
 Fernando Bonilla [linkedin](https://www.linkedin.com/in/fer-bonilla/)
