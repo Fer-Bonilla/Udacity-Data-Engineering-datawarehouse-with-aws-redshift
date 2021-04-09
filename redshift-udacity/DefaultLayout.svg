@@ -1,0 +1,411 @@
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='944' height='574' viewBox='0 0 944 574' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Trebuchet MS, 'Trebuchet MS', Dialog; font-size:13.0px; }
+  a text:hover        { fill:#0d196f; text-shadow: 0px 0px 6px #d0ce00; font-size:13px; font-weight: bold;}
+  text.highlight      { fill:#0d196f; text-shadow: 0px 0px 4px #eac533; font-size:13px; font-weight: bold;}
+  text.white          { fill:#ffffff; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#9c9a9a; }
+  text.legendTitle    { fill:#d65c68; font-weight:bold; }
+  text.legendSubTitle { fill:#717171; font-size:11px; }
+  path                { stroke:#857f70; stroke-width:1.15; fill:none;}
+  path.virtual        { stroke:#a67822; }
+  path.logo           { fill:#fbeac0;fill-opacity:1;stroke-width:0.3;stroke:#222222; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:3; stroke:#0054c5; opacity:0.8;}
+  rect.entity         { fill:#ffffff; stroke:#777; stroke-width:1;shape-rendering:crispEdges; filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: Trebuchet MS, 'Trebuchet MS', Dialog; font-size:14.0px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; }
+  rect.grp            { stroke:#a1a1a1; stroke-width:3; opacity:0.25; }
+  path.st0            { fill:none;stroke-width:0.6;stroke:#e1e6eb; }
+</style>
+<defs>
+  <radialGradient id='layoutBgB' cx='100%' cy='100%' r='100%'  >
+    <stop offset='0%' stop-color='#e9eaec' />
+    <stop offset='100%' stop-color='#f5f6f8' />
+  </radialGradient>
+  <pattern id="layoutBgA" width="60" height="34.64" patternUnits="userSpaceOnUse">
+    <path class='st0' d='M 0 17.32 L 10 0 L 30 0 L 40 17.326 L 30 34.64 L 10 34.64 Z' />
+    <path class='st0' d='M 40 17.32 L 60 17.32 Z' />
+  </pattern>
+  <!-- https://norbat.de/svg-pattern-3d-webmuster/ -->
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+    <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/>
+    <stop offset='100%' stop-color='#999999' stop-opacity='0' />
+  </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+    <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id="shadow" width="120%" height="120%">
+    <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#333" flood-opacity="0.2" />
+  </filter>
+  <!--
+  <filter id='shadow2' width='120%' height='120%'>
+    <feOffset result='offOut' in='SourceGraphic' dx='0' dy='0' />
+    <feColorMatrix result='matrixOut' in='offOut'
+                   values='0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0 0 0 0 0 0.5 0' />
+    <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' />
+    <feBlend in='SourceGraphic' in2='blurOut' />
+  </filter>
+  -->
+  <filter id='fkShadow' height='130%'>
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+      <feMergeNode/> <!-- this contains the offset blurred image -->
+      <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' cx='5%' cy='5%' r='100%' >
+    <stop offset='0%' stop-color='#e4eeff' stop-opacity='1'/>
+    <stop offset='100%' stop-color='#c3d2ea' stop-opacity='1' />
+  </radialGradient>
+  <symbol id='calloutArrowDown' >
+    <path d='M 0,0 L 8,12 L 16,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+    <path d='M 0,0 L 8,12 L 16,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' >
+    <path d='M 0,16 L 8,4 L 16,16 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+    <path d='M 0,16 L 8,4 L 16,16' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' >
+    <g transform='scale(0.99)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+            d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+      <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+            style='fill:#ffe5a5;fill-opacity:1;stroke:#906b25;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='idx1' >
+    <g transform='scale(0.99)'>
+      <rect width='4' height='4' x='7' y='1' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.83'/>
+      <rect width='4' height='4' x='1' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+      <rect width='4' height='4' x='7' y='7' style='fill:#ffff3f;stroke:#b48333;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='idx2' >
+    <g transform='scale(0.99)'>
+      <rect width='4' height='3' x='6' y='1' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.83'/>
+      <rect width='7' height='3' x='3' y='6' style='fill:#7fc8e9;stroke:#2f6f8c;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:none;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+            width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+            transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#6a88cd;stroke:#5a72a8;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f0d938;stroke:#906b25;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+            d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' >
+    <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='view' >
+    <g transform='scale(0.99)'>
+      <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+      <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+      <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+      <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+</defs>
+
+<defs>  <marker id='arrow01' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 8.000,4.000 L 16.000,4.000 L 8.000,0.000 L 16.000,4.000 L 8.000,8.000' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <circle cx='12.00' cy='4.00' r='2.67' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 4.00,0.00 L 4.00, 8.00 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 16.00 8.00' refX='8.00' refY='4.00' markerWidth='16.00' markerHeight='8.00' orient='auto'>
+    <path d='M 0.00,4.00 L 16.00,4.00 z' />
+    <path d='M 8.00,0.00 L 8.00, 8.00 z' />
+    <path d='M 0.00,0.00 L 8.00,4.00 L 0.00,8.00' />
+  </marker>
+  <linearGradient id='tbg_BED3F4' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#E3EDFE' /> 
+     <stop offset='40%' stop-color='#CEE0FF' /> 
+     <stop offset='100%' stop-color='#B3C6E5' /> 
+  </linearGradient>
+</defs>
+
+<!-- == Desktop == -->
+<rect x='1' y='1' width='942' height='572' rx='8' ry='8' style='fill:url(#layoutBgA); stroke:#6a8093; stroke-width:0.5;' />
+<rect x='1' y='1' width='942' height='572' rx='8' ry='8' style='fill:url(#layoutBgTr);' />
+
+<!-- == Legend == -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='230' height='56' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='25' class='legendTitle' >udacity</text> 
+  <a xlink:href='https://dbschema.com'><text x='20' y='39' class='legendSubTitle'><tspan>(c) DbSchema</tspan></text></a> 
+  <text x='20' y='53' class='legendSubTitle'><tspan>Hover columns to read the comments.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- == Fk 'songplay_fk_songplay_time' == -->
+<path id='songplay_fk_songplay_time'  onmouseover="hghl(['songplay_fk_songplay_time','public.songplay.start_time','public.time.start_time'])" onmouseout="uhghl(['songplay_fk_songplay_time','public.songplay.start_time','public.time.start_time'])" transform='translate(8,0)' class='scene' d='M 608,256L 528,256' >
+	<title>Fk fk_songplay_time
+songplay ref time ( start_time )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 608,256L 528,256' ><title>Fk fk_songplay_time
+songplay ref time ( start_time )</title></path>
+<text x='556' y='251' transform='rotate(0 556,251)' class='relName'>start_time</text>
+<!-- == Fk 'songplay_fk_songplay_songs' == -->
+<path id='songplay_fk_songplay_songs'  onmouseover="hghl(['songplay_fk_songplay_songs','public.songplay.song_id','public.songs.song_id'])" onmouseout="uhghl(['songplay_fk_songplay_songs','public.songplay.song_id','public.songs.song_id'])" transform='translate(8,0)' class='scene' d='M 736,272L 784,272' >
+	<title>Fk fk_songplay_songs
+songplay ref songs ( song_id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1p)' marker-end='url(#arrow01)'    d='M 736,272L 784,272' ><title>Fk fk_songplay_songs
+songplay ref songs ( song_id )</title></path>
+<text x='745' y='267' transform='rotate(0 745,267)' class='relName'>song_id</text>
+<!-- == Fk 'songplay_fk_songplay_artists' == -->
+<path id='songplay_fk_songplay_artists'  onmouseover="hghl(['songplay_fk_songplay_artists','public.songplay.artist_id','public.artists.artist_id'])" onmouseout="uhghl(['songplay_fk_songplay_artists','public.songplay.artist_id','public.artists.artist_id'])" transform='translate(8,0)' class='scene' d='M 736,144L 784,144' >
+	<title>Fk fk_songplay_artists
+songplay ref artists ( artist_id )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1p)' marker-end='url(#arrow01)'    d='M 736,144L 784,144' ><title>Fk fk_songplay_artists
+songplay ref artists ( artist_id )</title></path>
+<text x='745' y='139' transform='rotate(0 745,139)' class='relName'>artist_id</text>
+<!-- == Fk 'songplay_fk_songplay_users' == -->
+<path id='songplay_fk_songplay_users'  onmouseover="hghl(['songplay_fk_songplay_users','public.songplay.user_id','public.users.level'])" onmouseout="uhghl(['songplay_fk_songplay_users','public.songplay.user_id','public.users.level'])" transform='translate(8,0)' class='scene' d='M 608,128L 512,128' >
+	<title>Fk fk_songplay_users
+songplay ref users ( user_id -&gt; level )</title>
+</path>
+<path transform='translate(8,0)' marker-start='url(#foot1p)' marker-end='url(#arrow01)'    d='M 608,128L 512,128' ><title>Fk fk_songplay_users
+songplay ref users ( user_id -&gt; level )</title></path>
+<text x='575' y='123' transform='rotate(0 575,123)' class='relName'>user_id</text>
+<!-- == Table 'artists' == -->
+<rect class='entity' style='stroke:none;' x='800' y='56' width='96' height='128' rx='8' ry='8' />
+<path d='M 800 84 L 800 64 Q 800 56 808 56 L 888 56 Q 896 56 896 64 L 896 84 L800 84 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='800' y='56' width='96' height='128' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.artists'><text x='826' y='75' >artists</text><title>Table public.artists</title></a>
+  <use id='unq' x='802' y='92' xlink:href='#unq'><title>Unq unq_artists_artist_id ( artist_id ) </title></use><a xlink:href='#public.artists_artist_id'><text id='public.artists.artist_id' x='819' y='103' onmouseover="hghl(['songplay_fk_songplay_artists','public.songplay.artist_id'])" onmouseout="uhghl(['songplay_fk_songplay_artists','public.songplay.artist_id'])">artist_id</text><title>artist_id
+varchar(20)</title></a>
+<a xlink:href='#public.artists.artist_id'><use id='ref' x='884' y='92' xlink:href='#ref'/><title>Referred by songplay ( artist_id ) </title></a>
+  <a xlink:href='#public.artists_name'><text id='public.artists.name' x='819' y='119'>name</text><title>name
+varchar(255)</title></a>
+<text x='893' y='116' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.artists_location'><text id='public.artists.location' x='819' y='135'>location</text><title>location
+varchar(255)</title></a>
+<text x='893' y='132' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.artists_latitude'><text id='public.artists.latitude' x='819' y='151'>latitude</text><title>latitude
+decimal(18,0)</title></a>
+<text x='893' y='148' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.artists_longitude'><text id='public.artists.longitude' x='819' y='167'>longitude</text><title>longitude
+decimal(18,0)</title></a>
+<text x='893' y='164' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'songplay' == -->
+<rect class='entity' style='stroke:none;' x='624' y='120' width='112' height='192' rx='8' ry='8' />
+<path d='M 624 148 L 624 128 Q 624 120 632 120 L 728 120 Q 736 120 736 128 L 736 148 L624 148 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='624' y='120' width='112' height='192' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.songplay'><text x='651' y='139' >songplay</text><title>Table public.songplay</title></a>
+  <use id='nn' x='626' y='157' xlink:href='#nn'/><use id='idx2' x='626' y='156' xlink:href='#idx2'><title>Sorting ( songplay_id ) </title></use><a xlink:href='#public.songplay_songplay_id'><text id='public.songplay.songplay_id' x='643' y='167'>songplay_id</text><title>songplay_id
+* integer default &quot;identity&quot;(118240, 0, &apos;0,1&apos;::text)</title></a>
+<text x='733' y='164' text-anchor='end' class='colType'>#</text>  <use id='nn' x='626' y='173' xlink:href='#nn'/><a xlink:href='#public.songplay_start_time'><text id='public.songplay.start_time' x='643' y='183' onmouseover="hghl(['songplay_fk_songplay_time','public.time.start_time'])" onmouseout="uhghl(['songplay_fk_songplay_time','public.time.start_time'])">start_time</text><title>start_time
+* timestamp</title></a>
+<a xlink:href='#public.songplay.start_time'><use id='fk' x='724' y='172' xlink:href='#fk'/><title>References time ( start_time ) </title></a>
+  <use id='nn' x='626' y='189' xlink:href='#nn'/><a xlink:href='#public.songplay_user_id'><text id='public.songplay.user_id' x='643' y='199' onmouseover="hghl(['songplay_fk_songplay_users','public.users.level'])" onmouseout="uhghl(['songplay_fk_songplay_users','public.users.level'])">user_id</text><title>user_id
+* integer</title></a>
+<a xlink:href='#public.songplay.user_id'><use id='fk' x='724' y='188' xlink:href='#fk'/><title>References users ( user_id -&gt; level ) </title></a>
+  <a xlink:href='#public.songplay_level'><text id='public.songplay.level' x='643' y='215'>level</text><title>level
+varchar(20)</title></a>
+<text x='733' y='212' text-anchor='end' class='colType'>t</text>  <use id='nn' x='626' y='221' xlink:href='#nn'/><a xlink:href='#public.songplay_song_id'><text id='public.songplay.song_id' x='643' y='231' onmouseover="hghl(['songplay_fk_songplay_songs','public.songs.song_id'])" onmouseout="uhghl(['songplay_fk_songplay_songs','public.songs.song_id'])">song_id</text><title>song_id
+* varchar(20)</title></a>
+<a xlink:href='#public.songplay.song_id'><use id='fk' x='724' y='220' xlink:href='#fk'/><title>References songs ( song_id ) </title></a>
+  <use id='nn' x='626' y='237' xlink:href='#nn'/><a xlink:href='#public.songplay_artist_id'><text id='public.songplay.artist_id' x='643' y='247' onmouseover="hghl(['songplay_fk_songplay_artists','public.artists.artist_id'])" onmouseout="uhghl(['songplay_fk_songplay_artists','public.artists.artist_id'])">artist_id</text><title>artist_id
+* varchar(20)</title></a>
+<a xlink:href='#public.songplay.artist_id'><use id='fk' x='724' y='236' xlink:href='#fk'/><title>References artists ( artist_id ) </title></a>
+  <use id='nn' x='626' y='253' xlink:href='#nn'/><a xlink:href='#public.songplay_session_id'><text id='public.songplay.session_id' x='643' y='263'>session_id</text><title>session_id
+* integer</title></a>
+<text x='733' y='260' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.songplay_location'><text id='public.songplay.location' x='643' y='279'>location</text><title>location
+varchar(256)</title></a>
+<text x='733' y='276' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.songplay_user_agent'><text id='public.songplay.user_agent' x='643' y='295'>user_agent</text><title>user_agent
+varchar(256)</title></a>
+<text x='733' y='292' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'songs' == -->
+<rect class='entity' style='stroke:none;' x='800' y='264' width='96' height='128' rx='8' ry='8' />
+<path d='M 800 292 L 800 272 Q 800 264 808 264 L 888 264 Q 896 264 896 272 L 896 292 L800 292 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='800' y='264' width='96' height='128' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.songs'><text x='828' y='283' >songs</text><title>Table public.songs</title></a>
+  <use id='unq' x='802' y='300' xlink:href='#unq'><title>Unq unq_songs_song_id ( song_id ) </title></use><a xlink:href='#public.songs_song_id'><text id='public.songs.song_id' x='819' y='311' onmouseover="hghl(['songplay_fk_songplay_songs','public.songplay.song_id'])" onmouseout="uhghl(['songplay_fk_songplay_songs','public.songplay.song_id'])">song_id</text><title>song_id
+varchar(20)</title></a>
+<a xlink:href='#public.songs.song_id'><use id='ref' x='884' y='300' xlink:href='#ref'/><title>Referred by songplay ( song_id ) </title></a>
+  <a xlink:href='#public.songs_title'><text id='public.songs.title' x='819' y='327'>title</text><title>title
+varchar(255)</title></a>
+<text x='893' y='324' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.songs_artist_id'><text id='public.songs.artist_id' x='819' y='343'>artist_id</text><title>artist_id
+varchar(20)</title></a>
+<text x='893' y='340' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.songs_duration'><text id='public.songs.duration' x='819' y='359'>duration</text><title>duration
+decimal(18,0)</title></a>
+<text x='893' y='356' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.songs_year'><text id='public.songs.year' x='819' y='375'>year</text><title>year
+integer</title></a>
+<text x='893' y='372' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'staging_events' == -->
+<rect class='entity' style='stroke:none;' x='48' y='72' width='128' height='336' rx='8' ry='8' />
+<path d='M 48 100 L 48 80 Q 48 72 56 72 L 168 72 Q 176 72 176 80 L 176 100 L48 100 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='48' y='72' width='128' height='336' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.staging_events'><text x='65' y='91' >staging_events</text><title>Table public.staging_events</title></a>
+  <a xlink:href='#public.staging_events_artist'><text id='public.staging_events.artist' x='67' y='119'>artist</text><title>artist
+varchar(256)</title></a>
+<text x='173' y='116' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_auth'><text id='public.staging_events.auth' x='67' y='135'>auth</text><title>auth
+varchar(256)</title></a>
+<text x='173' y='132' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_firstname'><text id='public.staging_events.firstname' x='67' y='151'>firstname</text><title>firstname
+varchar(256)</title></a>
+<text x='173' y='148' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_gender'><text id='public.staging_events.gender' x='67' y='167'>gender</text><title>gender
+varchar(256)</title></a>
+<text x='173' y='164' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_iteminsession'><text id='public.staging_events.iteminsession' x='67' y='183'>iteminsession</text><title>iteminsession
+varchar(256)</title></a>
+<text x='173' y='180' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_lastname'><text id='public.staging_events.lastname' x='67' y='199'>lastname</text><title>lastname
+varchar(256)</title></a>
+<text x='173' y='196' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_length'><text id='public.staging_events.length' x='67' y='215'>length</text><title>length
+varchar(256)</title></a>
+<text x='173' y='212' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_level'><text id='public.staging_events.level' x='67' y='231'>level</text><title>level
+varchar(256)</title></a>
+<text x='173' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_location'><text id='public.staging_events.location' x='67' y='247'>location</text><title>location
+varchar(256)</title></a>
+<text x='173' y='244' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_method'><text id='public.staging_events.method' x='67' y='263'>method</text><title>method
+varchar(256)</title></a>
+<text x='173' y='260' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_page'><text id='public.staging_events.page' x='67' y='279'>page</text><title>page
+varchar(256)</title></a>
+<text x='173' y='276' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_registration'><text id='public.staging_events.registration' x='67' y='295'>registration</text><title>registration
+varchar(256)</title></a>
+<text x='173' y='292' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_sessionid'><text id='public.staging_events.sessionid' x='67' y='311'>sessionid</text><title>sessionid
+integer</title></a>
+<text x='173' y='308' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.staging_events_song'><text id='public.staging_events.song' x='67' y='327'>song</text><title>song
+varchar(256)</title></a>
+<text x='173' y='324' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_status'><text id='public.staging_events.status' x='67' y='343'>status</text><title>status
+varchar(256)</title></a>
+<text x='173' y='340' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_ts'><text id='public.staging_events.ts' x='67' y='359'>ts</text><title>ts
+bigint</title></a>
+<text x='173' y='356' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.staging_events_useragent'><text id='public.staging_events.useragent' x='67' y='375'>useragent</text><title>useragent
+varchar(256)</title></a>
+<text x='173' y='372' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_events_userid'><text id='public.staging_events.userid' x='67' y='391'>userid</text><title>userid
+integer</title></a>
+<text x='173' y='388' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'staging_songs' == -->
+<rect class='entity' style='stroke:none;' x='192' y='72' width='144' height='208' rx='8' ry='8' />
+<path d='M 192 100 L 192 80 Q 192 72 200 72 L 328 72 Q 336 72 336 80 L 336 100 L192 100 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='192' y='72' width='144' height='208' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.staging_songs'><text x='220' y='91' >staging_songs</text><title>Table public.staging_songs</title></a>
+  <a xlink:href='#public.staging_songs_num_songs'><text id='public.staging_songs.num_songs' x='211' y='119'>num_songs</text><title>num_songs
+integer</title></a>
+<text x='333' y='116' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.staging_songs_artist_id'><text id='public.staging_songs.artist_id' x='211' y='135'>artist_id</text><title>artist_id
+varchar(256)</title></a>
+<text x='333' y='132' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_artist_latitude'><text id='public.staging_songs.artist_latitude' x='211' y='151'>artist_latitude</text><title>artist_latitude
+varchar(256)</title></a>
+<text x='333' y='148' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_artist_longitude'><text id='public.staging_songs.artist_longitude' x='211' y='167'>artist_longitude</text><title>artist_longitude
+varchar(256)</title></a>
+<text x='333' y='164' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_artist_location'><text id='public.staging_songs.artist_location' x='211' y='183'>artist_location</text><title>artist_location
+varchar(256)</title></a>
+<text x='333' y='180' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_artist_name'><text id='public.staging_songs.artist_name' x='211' y='199'>artist_name</text><title>artist_name
+varchar(256)</title></a>
+<text x='333' y='196' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_song_id'><text id='public.staging_songs.song_id' x='211' y='215'>song_id</text><title>song_id
+varchar(256)</title></a>
+<text x='333' y='212' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_title'><text id='public.staging_songs.title' x='211' y='231'>title</text><title>title
+varchar(256)</title></a>
+<text x='333' y='228' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.staging_songs_duration'><text id='public.staging_songs.duration' x='211' y='247'>duration</text><title>duration
+decimal(18,0)</title></a>
+<text x='333' y='244' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.staging_songs_year'><text id='public.staging_songs.year' x='211' y='263'>year</text><title>year
+integer</title></a>
+<text x='333' y='260' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'time' == -->
+<rect class='entity' style='stroke:none;' x='416' y='232' width='112' height='160' rx='8' ry='8' />
+<path d='M 416 260 L 416 240 Q 416 232 424 232 L 520 232 Q 528 232 528 240 L 528 260 L416 260 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='416' y='232' width='112' height='160' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.time'><text x='455' y='251' >time</text><title>Table public.time</title></a>
+  <use id='nn' x='418' y='269' xlink:href='#nn'/><use id='unq' x='418' y='268' xlink:href='#unq'><title>Unq Sorting ( start_time ) </title></use><a xlink:href='#public.time_start_time'><text id='public.time.start_time' x='435' y='279' onmouseover="hghl(['songplay_fk_songplay_time','public.songplay.start_time'])" onmouseout="uhghl(['songplay_fk_songplay_time','public.songplay.start_time'])">start_time</text><title>start_time
+* timestamp</title></a>
+<a xlink:href='#public.time.start_time'><use id='ref' x='516' y='268' xlink:href='#ref'/><title>Referred by songplay ( start_time ) </title></a>
+  <a xlink:href='#public.time_hour'><text id='public.time.hour' x='435' y='295'>hour</text><title>hour
+integer</title></a>
+<text x='525' y='292' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.time_day'><text id='public.time.day' x='435' y='311'>day</text><title>day
+integer</title></a>
+<text x='525' y='308' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.time_week'><text id='public.time.week' x='435' y='327'>week</text><title>week
+integer</title></a>
+<text x='525' y='324' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.time_month'><text id='public.time.month' x='435' y='343'>month</text><title>month
+integer</title></a>
+<text x='525' y='340' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.time_year'><text id='public.time.year' x='435' y='359'>year</text><title>year
+integer</title></a>
+<text x='525' y='356' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.time_weekday'><text id='public.time.weekday' x='435' y='375'>weekday</text><title>weekday
+integer</title></a>
+<text x='525' y='372' text-anchor='end' class='colType'>#</text>
+<!-- == Table 'users' == -->
+<rect class='entity' style='stroke:none;' x='400' y='40' width='112' height='128' rx='8' ry='8' />
+<path d='M 400 68 L 400 48 Q 400 40 408 40 L 504 40 Q 512 40 512 48 L 512 68 L400 68 ' style='fill:url(#tbg_BED3F4);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='400' y='40' width='112' height='128' rx='8' ry='8' style='fill:none;stroke:#CBD6E8'/>
+<a xlink:href='#public.users'><text x='437' y='59' >users</text><title>Table public.users</title></a>
+  <use id='nn' x='402' y='77' xlink:href='#nn'/><use id='unq' x='402' y='76' xlink:href='#unq'><title>Unq Sorting ( user_id ) </title></use><a xlink:href='#public.users_user_id'><text id='public.users.user_id' x='419' y='87' onmouseover="hghl(['songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id'])" onmouseout="uhghl(['songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id','songplay_fk_songplay_users','public.songplay.user_id'])">user_id</text><title>user_id
+* integer</title></a>
+<text x='509' y='84' text-anchor='end' class='colType'>#</text>  <a xlink:href='#public.users_first_name'><text id='public.users.first_name' x='419' y='103'>first_name</text><title>first_name
+varchar(255)</title></a>
+<text x='509' y='100' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.users_last_name'><text id='public.users.last_name' x='419' y='119'>last_name</text><title>last_name
+varchar(255)</title></a>
+<text x='509' y='116' text-anchor='end' class='colType'>t</text>  <a xlink:href='#public.users_gender'><text id='public.users.gender' x='419' y='135'>gender</text><title>gender
+varchar(1)</title></a>
+<text x='509' y='132' text-anchor='end' class='colType'>t</text>  <use id='unq' x='402' y='140' xlink:href='#unq'><title>Unq unq_users_level ( level ) </title></use><a xlink:href='#public.users_level'><text id='public.users.level' x='419' y='151' onmouseover="hghl(['songplay_fk_songplay_users','public.songplay.user_id'])" onmouseout="uhghl(['songplay_fk_songplay_users','public.songplay.user_id'])">level</text><title>level
+varchar(20)</title></a>
+<a xlink:href='#public.users.level'><use id='ref' x='500' y='140' xlink:href='#ref'/><title>Referred by songplay ( user_id -&gt; level ) </title></a>
+
+</g></svg>
